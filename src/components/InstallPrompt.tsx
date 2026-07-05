@@ -7,7 +7,7 @@ export function InstallPrompt() {
   if (!canInstall || isInstalled) return null
 
   return (
-    <div className="fixed left-4 right-4 z-50 animate-fade-slide lg:bottom-4 lg:left-72 lg:right-auto lg:max-w-sm" style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 5.5rem)' }}>
+    <div className="fixed inset-x-4 above-bottom-nav z-50 animate-fade-slide lg:bottom-4 lg:left-72 lg:right-auto lg:max-w-sm lg:top-auto">
       <div className="bg-white rounded-2xl elevated-shadow p-4 flex items-center gap-3">
         <div className="flex-shrink-0 w-12 h-12 rounded-xl overflow-hidden bg-gray100 flex items-center justify-center">
           <img src="/icon-192.png" alt="Mario Business" className="w-full h-full object-cover" />
@@ -18,14 +18,14 @@ export function InstallPrompt() {
         </div>
         <button
           onClick={install}
-          className="flex-shrink-0 bg-primary text-white rounded-xl p-2.5 active:scale-90 transition-transform"
+          className="touch-target-icon flex-shrink-0 bg-primary text-white rounded-xl p-2.5 active:scale-90 transition-transform"
           aria-label="Install"
         >
           <Download size={20} />
         </button>
         <button
           onClick={dismiss}
-          className="flex-shrink-0 text-gray400 p-1 active:scale-90 transition-transform"
+          className="touch-target-icon flex-shrink-0 text-gray400 p-1 active:scale-90 transition-transform"
           aria-label="Dismiss"
         >
           <X size={18} />

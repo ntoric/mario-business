@@ -49,7 +49,7 @@ export function Sales() {
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="bg-white pt-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
+      <div className="bg-white mobile-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0 flex-1">
             <h1 className="text-lg xs:text-xl font-extrabold text-dark">Sales Analytics</h1>

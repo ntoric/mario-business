@@ -36,7 +36,7 @@ export function StoreRevenue({
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="gradient-primary pt-header pb-6 px-4 xs:px-5 lg:px-8 rounded-b-[28px]">
+      <div className="gradient-primary mobile-header pb-6 px-4 xs:px-5 lg:px-8 rounded-b-[28px]">
         <h1 className="text-white text-lg xs:text-xl font-extrabold">Store Revenue</h1>
         <p className="text-white/60 text-sm mt-0.5">Performance across all stores</p>
 

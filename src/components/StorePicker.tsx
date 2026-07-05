@@ -36,7 +36,7 @@ export function StorePickerButton({ onStoreChanged }: { onStoreChanged?: () => v
           onClick={() => setOpen(false)}
         >
           <div
-            className="bg-white rounded-t-3xl w-full max-w-md pb-nav-bottom safe-bottom animate-fade-slide max-h-[85dvh] overflow-y-auto"
+            className="bg-white rounded-t-3xl w-full max-w-md pb-6 safe-bottom animate-fade-slide max-h-[85dvh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-center pt-3 pb-2">

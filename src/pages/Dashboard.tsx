@@ -57,7 +57,7 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="gradient-primary pt-header pb-20 px-4 xs:px-5 lg:px-8 rounded-b-[32px]">
+      <div className="gradient-primary mobile-header pb-20 px-4 xs:px-5 lg:px-8 rounded-b-[32px]">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0 flex-1">
             <p className="text-white/60 text-xs font-semibold uppercase tracking-wider">Dashboard</p>

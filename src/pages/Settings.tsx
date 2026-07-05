@@ -18,7 +18,7 @@ export function Settings() {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [success, setSuccess] = useState(false)
-  const { canInstall, isInstalled, isIos, install } = usePwaInstall({ respectDismissal: false })
+  const { canInstall, isInstalled, isIos, isAndroid, install } = usePwaInstall({ respectDismissal: false })
 
   const stores = user?.stores ?? []
 
@@ -47,7 +47,7 @@ export function Settings() {
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="bg-white pt-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
+      <div className="bg-white mobile-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
         <h1 className="text-lg xs:text-xl font-extrabold text-dark">Settings</h1>
       </div>
 
@@ -238,13 +238,15 @@ export function Settings() {
                     <p className="text-[11px] text-gray500">
                       {isIos
                         ? 'Tap Share, then "Add to Home Screen"'
-                        : 'Install Mario Business on your device'}
+                        : isAndroid && canInstall
+                          ? 'Tap Install to add to your home screen'
+                          : 'Install Mario Business on your device'}
                     </p>
                   </div>
                   {canInstall && (
                     <button
                       onClick={install}
-                      className="flex-shrink-0 bg-primary text-white rounded-xl p-2.5 active:scale-90 transition-transform"
+                      className="touch-target-icon flex-shrink-0 bg-primary text-white rounded-xl p-2.5 active:scale-90 transition-transform"
                       aria-label="Install app"
                     >
                       <Download size={18} />

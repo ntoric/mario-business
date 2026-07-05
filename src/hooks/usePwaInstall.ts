@@ -14,6 +14,10 @@ export function isIos(): boolean {
   return /iphone|ipad|ipod/i.test(window.navigator.userAgent)
 }
 
+export function isAndroid(): boolean {
+  return /android/i.test(window.navigator.userAgent)
+}
+
 export function usePwaInstall(options: { respectDismissal?: boolean } = {}) {
   const { respectDismissal = true } = options
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
@@ -64,6 +68,7 @@ export function usePwaInstall(options: { respectDismissal?: boolean } = {}) {
     canInstall,
     isInstalled,
     isIos: isIos(),
+    isAndroid: isAndroid(),
     install,
     dismiss,
   }

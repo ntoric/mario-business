@@ -7,10 +7,10 @@ export default {
         xs: '375px',
       },
       spacing: {
-        'safe-top': 'env(safe-area-inset-top, 0px)',
-        'safe-bottom': 'env(safe-area-inset-bottom, 0px)',
-        header: 'calc(env(safe-area-inset-top, 0px) + 3rem)',
-        'nav-bottom': 'calc(env(safe-area-inset-bottom, 0px) + 5.5rem)',
+        'safe-top': 'var(--safe-top)',
+        'safe-bottom': 'var(--safe-bottom)',
+        header: 'var(--header-offset)',
+        'nav-bottom': 'var(--nav-offset)',
       },
       minHeight: {
         'screen-dvh': '100dvh',
@@ -55,7 +55,7 @@ export default {
         infoLight: '#74B9FF',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       borderRadius: {
         'xl': '14px',
