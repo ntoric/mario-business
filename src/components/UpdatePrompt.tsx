@@ -6,6 +6,7 @@ export function UpdatePrompt() {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW({
+    immediate: true,
     onRegistered(registration) {
       if (registration) {
         setInterval(() => registration.update(), 60 * 60 * 1000)

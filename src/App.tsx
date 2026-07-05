@@ -10,9 +10,6 @@ import { Orders } from './pages/Orders'
 import { Settings } from './pages/Settings'
 import { StoreRevenue } from './pages/StoreRevenue'
 import { BottomNav } from './components/BottomNav'
-import { InstallPrompt } from './components/InstallPrompt'
-import { UpdatePrompt } from './components/UpdatePrompt'
-import { OfflineBanner } from './components/OfflineBanner'
 
 type Page = 'dashboard' | 'sales' | 'reports' | 'orders' | 'settings' | 'stores'
 
@@ -82,9 +79,6 @@ export default function App() {
         />
       )}
 
-      <OfflineBanner />
-      <UpdatePrompt />
-      <InstallPrompt />
     </div>
   )
 }
