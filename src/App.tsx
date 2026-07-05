@@ -57,20 +57,22 @@ export default function App() {
   const showBottomNav = currentPage !== 'stores'
 
   return (
-    <div className="page-shell lg:ml-64 page-bottom-nav lg:pb-8">
-      {currentPage === 'dashboard' && (
-        <Dashboard onNavigateToStores={() => setCurrentPage('stores')} />
-      )}
-      {currentPage === 'sales' && <Sales />}
-      {currentPage === 'reports' && <Reports />}
-      {currentPage === 'orders' && <Orders />}
-      {currentPage === 'settings' && <Settings />}
-      {currentPage === 'stores' && (
-        <StoreRevenue
-          currentIndex={navIndexMap[currentPage]}
-          onTabChange={handleTabChange}
-        />
-      )}
+    <div className="app-layout lg:ml-64">
+      <main className="app-main lg:pb-8">
+        {currentPage === 'dashboard' && (
+          <Dashboard onNavigateToStores={() => setCurrentPage('stores')} />
+        )}
+        {currentPage === 'sales' && <Sales />}
+        {currentPage === 'reports' && <Reports />}
+        {currentPage === 'orders' && <Orders />}
+        {currentPage === 'settings' && <Settings />}
+        {currentPage === 'stores' && (
+          <StoreRevenue
+            currentIndex={navIndexMap[currentPage]}
+            onTabChange={handleTabChange}
+          />
+        )}
+      </main>
 
       {showBottomNav && (
         <BottomNav
@@ -78,7 +80,6 @@ export default function App() {
           onTabChange={handleTabChange}
         />
       )}
-
     </div>
   )
 }

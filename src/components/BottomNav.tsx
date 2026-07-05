@@ -11,14 +11,20 @@ const navItems = [
 export function BottomNav({
   currentIndex,
   onTabChange,
+  fixedMobile = false,
 }: {
   currentIndex: number
   onTabChange: (index: number) => void
+  fixedMobile?: boolean
 }) {
+  const mobileNavClass = fixedMobile
+    ? 'lg:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray200 z-50 safe-bottom'
+    : 'lg:hidden flex-shrink-0 bg-white border-t border-gray200 z-50 safe-bottom'
+
   return (
     <>
       {/* Mobile: bottom bar */}
-      <nav className="lg:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray200 z-50 safe-bottom">
+      <nav className={mobileNavClass}>
         <div className="flex items-stretch w-full px-0.5 py-1">
           {navItems.map((item, index) => {
             const isSelected = currentIndex === index

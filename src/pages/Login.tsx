@@ -23,7 +23,7 @@ export function Login() {
   }
 
   return (
-    <div className="page-shell bg-white flex items-center justify-center safe-top safe-bottom px-4">
+    <div className="auth-screen bg-white flex items-center justify-center safe-top safe-bottom px-4">
       <div className="w-full max-w-md px-4 xs:px-6">
         <div className="mt-8 xs:mt-12 flex flex-col items-center">
           <div className="w-20 h-20 xs:w-24 xs:h-24 rounded-2xl overflow-hidden flex items-center justify-center">

@@ -22,17 +22,21 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     color-scheme: light;
+    height: 100%;
   }
 
   body {
     @apply bg-background text-dark antialiased;
-    min-height: 100vh;
-    min-height: 100dvh;
-    min-height: -webkit-fill-available;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    height: 100%;
     padding-left: var(--safe-left);
     padding-right: var(--safe-right);
+  }
+
+  #root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   button,
@@ -130,9 +134,41 @@
 
   .page-shell {
     @apply bg-background w-full;
-    min-height: 100vh;
-    min-height: 100dvh;
-    max-width: 100%;
+  }
+
+  .app-layout {
+    @apply w-full bg-background;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 1023px) {
+    .app-layout {
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .app-layout {
+      min-height: 100vh;
+    }
+  }
+
+  .app-main {
+    @apply w-full;
+  }
+
+  @media (max-width: 1023px) {
+    .app-main {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+    }
   }
 
   .page-bottom-nav {
@@ -143,6 +179,13 @@
     .page-bottom-nav {
       @apply pb-8;
     }
+  }
+
+  .auth-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mobile-header {

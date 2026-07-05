@@ -14,7 +14,7 @@ export function Splash({ status }: { status?: string }) {
   }, [])
 
   return (
-    <div className="fixed inset-0 page-shell gradient-primary flex items-center justify-center safe-top safe-bottom">
+    <div className="fixed inset-0 gradient-primary flex items-center justify-center safe-top safe-bottom">
       <div className="flex flex-col items-center px-6">
         <div
           className={`transition-all duration-500 ease-out ${

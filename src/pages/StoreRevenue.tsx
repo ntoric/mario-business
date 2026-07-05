@@ -34,7 +34,7 @@ export function StoreRevenue({
   const totalOrders = summaries.reduce((sum, s) => sum + s.totalOrders, 0)
 
   return (
-    <div className="w-full">
+    <div className="w-full page-bottom-nav lg:pb-0">
       {/* Header */}
       <div className="gradient-primary mobile-header pb-6 px-4 xs:px-5 lg:px-8 rounded-b-[28px]">
         <h1 className="text-white text-lg xs:text-xl font-extrabold">Store Revenue</h1>
@@ -124,7 +124,7 @@ export function StoreRevenue({
         )}
       </div>
 
-      <BottomNav currentIndex={currentIndex} onTabChange={onTabChange} />
+      <BottomNav currentIndex={currentIndex} onTabChange={onTabChange} fixedMobile />
     </div>
   )
 }
