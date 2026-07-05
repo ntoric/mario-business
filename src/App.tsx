@@ -57,7 +57,7 @@ export default function App() {
   const showBottomNav = currentPage !== 'stores'
 
   return (
-    <div className="min-h-screen bg-background lg:ml-64 pb-24 lg:pb-0">
+    <div className="page-shell lg:ml-64 page-bottom-nav lg:pb-8">
       {currentPage === 'dashboard' && (
         <Dashboard onNavigateToStores={() => setCurrentPage('stores')} />
       )}

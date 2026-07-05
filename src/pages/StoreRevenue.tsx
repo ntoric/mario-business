@@ -34,42 +34,42 @@ export function StoreRevenue({
   const totalOrders = summaries.reduce((sum, s) => sum + s.totalOrders, 0)
 
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-8">
+    <div className="w-full">
       {/* Header */}
-      <div className="gradient-primary pt-12 pb-6 px-5 lg:px-8 rounded-b-[28px]">
-        <h1 className="text-white text-xl font-extrabold">Store Revenue</h1>
+      <div className="gradient-primary pt-header pb-6 px-4 xs:px-5 lg:px-8 rounded-b-[28px]">
+        <h1 className="text-white text-lg xs:text-xl font-extrabold">Store Revenue</h1>
         <p className="text-white/60 text-sm mt-0.5">Performance across all stores</p>
 
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="bg-white/10 rounded-2xl p-3.5 backdrop-blur-sm">
+        <div className="mt-4 grid grid-cols-2 gap-2.5 xs:gap-3">
+          <div className="bg-white/10 rounded-2xl p-3 xs:p-3.5 backdrop-blur-sm min-w-0">
             <TrendingUp size={18} className="text-white/70" />
-            <p className="text-white text-lg font-extrabold mt-1.5">{formatCurrency(totalRevenue)}</p>
+            <p className="text-white text-base xs:text-lg font-extrabold mt-1.5 truncate">{formatCurrency(totalRevenue)}</p>
             <p className="text-white/50 text-[11px]">Total Revenue</p>
           </div>
-          <div className="bg-white/10 rounded-2xl p-3.5 backdrop-blur-sm">
+          <div className="bg-white/10 rounded-2xl p-3 xs:p-3.5 backdrop-blur-sm min-w-0">
             <ShoppingBag size={18} className="text-white/70" />
-            <p className="text-white text-lg font-extrabold mt-1.5">{totalOrders}</p>
+            <p className="text-white text-base xs:text-lg font-extrabold mt-1.5">{totalOrders}</p>
             <p className="text-white/50 text-[11px]">Total Orders</p>
           </div>
         </div>
       </div>
 
       {/* Search */}
-      <div className="px-5 lg:px-8 mt-4">
-        <div className="relative max-w-md">
+      <div className="px-4 xs:px-5 lg:px-8 mt-4">
+        <div className="relative">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray400" />
           <input
-            type="text"
+            type="search"
             placeholder="Search stores..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="input-field pl-11 py-3 text-sm"
+            className="input-field pl-11"
           />
         </div>
       </div>
 
       {/* Store List */}
-      <div className="px-5 lg:px-8 mt-4">
+      <div className="px-4 xs:px-5 lg:px-8 mt-4">
         {loading ? (
           <div className="space-y-3">
             {Array.from({ length: 4 }).map((_, i) => <ShimmerBox key={i} className="h-24" />)}
@@ -84,13 +84,13 @@ export function StoreRevenue({
             {filtered.map((store, i) => (
               <StaggeredAnimation key={store.storeId} index={i}>
                 <GlassCard className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-primary-extraLight flex items-center justify-center">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                      <div className="w-11 h-11 rounded-xl bg-primary-extraLight flex items-center justify-center shrink-0">
                         <StoreIcon size={20} className="text-primary" />
                       </div>
-                      <div>
-                        <p className="font-bold text-sm text-dark">{store.storeName}</p>
+                      <div className="min-w-0">
+                        <p className="font-bold text-sm text-dark truncate">{store.storeName}</p>
                         <div className="flex items-center gap-3 mt-1">
                           <span className="flex items-center gap-1 text-[11px] text-gray500">
                             <ShoppingBag size={11} />
@@ -103,7 +103,7 @@ export function StoreRevenue({
                         </div>
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right shrink-0">
                       <p className="font-extrabold text-sm text-success">
                         {formatCurrency(store.totalRevenue)}
                       </p>

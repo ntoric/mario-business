@@ -19,7 +19,7 @@ export function BottomNav({
     <>
       {/* Mobile: bottom bar */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray200 z-50 safe-bottom">
-        <div className="flex justify-around items-center px-2 py-2.5 max-w-md mx-auto">
+        <div className="flex justify-around items-center px-1 xs:px-2 py-1.5 max-w-md mx-auto">
           {navItems.map((item, index) => {
             const isSelected = currentIndex === index
             const Icon = item.icon
@@ -27,19 +27,19 @@ export function BottomNav({
               <button
                 key={index}
                 onClick={() => onTabChange(index)}
-                className={`flex flex-col items-center gap-1 px-3.5 py-2 rounded-2xl transition-all duration-200 ${
+                className={`touch-target flex flex-col items-center justify-center gap-0.5 xs:gap-1 px-2 xs:px-3.5 py-1.5 rounded-2xl transition-all duration-200 ${
                   isSelected
                     ? 'bg-primary-extraLight text-primary'
                     : 'text-gray400'
                 }`}
               >
                 <Icon
-                  size={24}
+                  size={22}
                   strokeWidth={isSelected ? 2.5 : 2}
                   className={isSelected ? 'text-primary' : 'text-gray400'}
                 />
                 <span
-                  className={`text-[11px] ${
+                  className={`text-[10px] xs:text-[11px] leading-tight ${
                     isSelected ? 'font-bold text-primary' : 'font-medium text-gray400'
                   }`}
                 >

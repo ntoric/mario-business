@@ -55,16 +55,16 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
   ]
 
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-8">
+    <div className="w-full">
       {/* Header */}
-      <div className="gradient-primary pt-12 pb-20 px-5 lg:px-8 rounded-b-[32px]">
-        <div className="flex items-center justify-between">
-          <div>
+      <div className="gradient-primary pt-header pb-20 px-4 xs:px-5 lg:px-8 rounded-b-[32px]">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0 flex-1">
             <p className="text-white/60 text-xs font-semibold uppercase tracking-wider">Dashboard</p>
-            <h1 className="text-white text-2xl font-extrabold mt-1">
+            <h1 className="text-white text-xl xs:text-2xl font-extrabold mt-1 truncate">
               Hello, {user?.name?.split(' ')[0] ?? 'User'}
             </h1>
-            <p className="text-white/50 text-sm mt-0.5">
+            <p className="text-white/50 text-sm mt-0.5 truncate">
               {currentStore?.branch ? `${currentStore.name} - ${currentStore.branch}` : currentStore?.name ?? 'All Stores'}
             </p>
           </div>
@@ -73,21 +73,21 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
       </div>
 
       {/* Main Stats Grid */}
-      <div className="px-5 lg:px-8 -mt-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="px-4 xs:px-5 lg:px-8 -mt-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 xs:gap-3">
           {isLoading
-            ? Array.from({ length: 4 }).map((_, i) => <ShimmerBox key={i} className="h-32" />)
+            ? Array.from({ length: 4 }).map((_, i) => <ShimmerBox key={i} className="h-28 xs:h-32" />)
             : stats.map((stat, i) => {
                 const Icon = stat.icon
                 return (
                   <StaggeredAnimation key={i} index={i}>
-                    <GlassCard className="p-4 h-32 flex flex-col justify-between">
-                      <div className={`w-10 h-10 rounded-xl ${stat.color} flex items-center justify-center`}>
-                        <Icon size={20} className="text-white" />
+                    <GlassCard className="p-3 xs:p-4 h-28 xs:h-32 flex flex-col justify-between min-w-0">
+                      <div className={`w-9 xs:w-10 h-9 xs:h-10 rounded-xl ${stat.color} flex items-center justify-center shrink-0`}>
+                        <Icon size={18} className="text-white" />
                       </div>
-                      <div>
-                        <p className="text-xl font-extrabold text-dark">{stat.value}</p>
-                        <p className="text-xs text-gray500 font-medium mt-0.5">{stat.label}</p>
+                      <div className="min-w-0">
+                        <p className="text-base xs:text-xl font-extrabold text-dark truncate">{stat.value}</p>
+                        <p className="text-[11px] xs:text-xs text-gray500 font-medium mt-0.5 leading-tight">{stat.label}</p>
                       </div>
                     </GlassCard>
                   </StaggeredAnimation>
@@ -97,17 +97,17 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
       </div>
 
       {/* Quick Stats */}
-      <div className="px-5 lg:px-8 mt-6">
+      <div className="px-4 xs:px-5 lg:px-8 mt-6">
         <h2 className="section-title mb-3">Quick Stats</h2>
-        <GlassCard className="p-4">
-          <div className="grid grid-cols-3 lg:grid-cols-6 gap-4">
+        <GlassCard className="p-3 xs:p-4">
+          <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-6 gap-3 xs:gap-4">
             {quickStats.map((qs, i) => {
               const Icon = qs.icon
               return (
-                <div key={i} className="flex flex-col items-center text-center">
+                <div key={i} className="flex flex-col items-center text-center min-w-0">
                   <Icon size={20} className={qs.color} />
-                  <p className="text-base font-extrabold text-dark mt-1.5">{qs.value}</p>
-                  <p className="text-[10px] text-gray500 font-medium mt-0.5 leading-tight">{qs.label}</p>
+                  <p className="text-sm xs:text-base font-extrabold text-dark mt-1.5 truncate w-full">{qs.value}</p>
+                  <p className="text-[11px] text-gray500 font-medium mt-0.5 leading-tight">{qs.label}</p>
                 </div>
               )
             })}
@@ -117,7 +117,7 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
 
       {/* All Stores Summary */}
       {user?.stores && user.stores.length > 1 && (
-        <div className="px-5 lg:px-8 mt-6">
+        <div className="px-4 xs:px-5 lg:px-8 mt-6">
           <div className="flex items-center justify-between mb-3">
             <h2 className="section-title">All Stores</h2>
             {onNavigateToStores && (
@@ -138,19 +138,19 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
               {storeSummaries.slice(0, 3).map((store, i) => (
                 <StaggeredAnimation key={store.storeId} index={i}>
                   <GlassCard className="p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-primary-extraLight flex items-center justify-center">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-3 min-w-0 flex-1">
+                        <div className="w-10 h-10 rounded-xl bg-primary-extraLight flex items-center justify-center shrink-0">
                           <StoreIcon size={18} className="text-primary" />
                         </div>
-                        <div>
-                          <p className="font-bold text-sm text-dark">{store.storeName}</p>
+                        <div className="min-w-0">
+                          <p className="font-bold text-sm text-dark truncate">{store.storeName}</p>
                           <p className="text-xs text-gray500 mt-0.5">
                             {store.completedOrders} orders · {store.activeOrders} active
                           </p>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         <p className="font-extrabold text-sm text-success">
                           {formatCurrency(store.totalRevenue)}
                         </p>
@@ -173,7 +173,7 @@ export function Dashboard({ onNavigateToStores }: { onNavigateToStores?: () => v
       )}
 
       {/* Footer */}
-      <div className="px-5 lg:px-8 mt-8 text-center">
+      <div className="px-4 xs:px-5 lg:px-8 mt-8 text-center">
         <p className="text-xs text-gray400">{APP_NAME} v{APP_VERSION}</p>
       </div>
     </div>

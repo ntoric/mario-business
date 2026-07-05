@@ -3,6 +3,21 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        xs: '375px',
+      },
+      spacing: {
+        'safe-top': 'env(safe-area-inset-top, 0px)',
+        'safe-bottom': 'env(safe-area-inset-bottom, 0px)',
+        header: 'calc(env(safe-area-inset-top, 0px) + 3rem)',
+        'nav-bottom': 'calc(env(safe-area-inset-bottom, 0px) + 5.5rem)',
+      },
+      minHeight: {
+        'screen-dvh': '100dvh',
+      },
+      height: {
+        'screen-dvh': '100dvh',
+      },
       colors: {
         primary: {
           DEFAULT: '#7B6EF6',

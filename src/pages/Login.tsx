@@ -23,13 +23,13 @@ export function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center safe-top px-4">
-      <div className="w-full max-w-md px-6">
-        <div className="mt-12 flex flex-col items-center">
-          <div className="w-18 h-18 rounded-2xl overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen-dvh bg-white flex items-center justify-center safe-top safe-bottom px-4">
+      <div className="w-full max-w-md px-4 xs:px-6">
+        <div className="mt-8 xs:mt-12 flex flex-col items-center">
+          <div className="w-20 h-20 xs:w-24 xs:h-24 rounded-2xl overflow-hidden flex items-center justify-center">
             <img src="/splash.png" alt="Mario Business" className="w-full h-full object-cover" />
           </div>
-          <h1 className="mt-6 text-2xl font-extrabold text-dark tracking-tight">
+          <h1 className="mt-6 text-xl xs:text-2xl font-extrabold text-dark tracking-tight">
             Welcome Back
           </h1>
           <p className="mt-1.5 text-sm text-gray500">
@@ -74,7 +74,7 @@ export function Login() {
             <button
               type="button"
               onClick={() => setObscurePassword(!obscurePassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray500"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray500 touch-target flex items-center justify-center"
             >
               {obscurePassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>

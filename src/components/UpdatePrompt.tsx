@@ -17,7 +17,7 @@ export function UpdatePrompt() {
   if (!needRefresh) return null
 
   return (
-    <div className="fixed top-4 left-4 right-4 z-[60] animate-fade-slide lg:left-72 lg:right-auto lg:max-w-sm">
+    <div className="fixed top-4 left-4 right-4 z-[60] animate-fade-slide safe-top lg:left-72 lg:right-auto lg:max-w-sm" style={{ top: 'max(1rem, env(safe-area-inset-top, 0px))' }}>
       <div className="bg-white rounded-2xl elevated-shadow p-4 flex items-center gap-3">
         <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary-extraLight flex items-center justify-center">
           <RefreshCw size={18} className="text-primary" />

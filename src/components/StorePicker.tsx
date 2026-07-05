@@ -36,7 +36,7 @@ export function StorePickerButton({ onStoreChanged }: { onStoreChanged?: () => v
           onClick={() => setOpen(false)}
         >
           <div
-            className="bg-white rounded-t-3xl w-full max-w-md pb-8 animate-fade-slide max-h-[80vh] overflow-y-auto"
+            className="bg-white rounded-t-3xl w-full max-w-md pb-nav-bottom safe-bottom animate-fade-slide max-h-[85dvh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-center pt-3 pb-2">
@@ -44,7 +44,7 @@ export function StorePickerButton({ onStoreChanged }: { onStoreChanged?: () => v
             </div>
             <div className="flex items-center justify-between px-5 pb-4">
               <h3 className="text-lg font-extrabold text-dark">Select Store</h3>
-              <button onClick={() => setOpen(false)} className="p-1">
+              <button onClick={() => setOpen(false)} className="touch-target p-1 -mr-1">
                 <X size={20} className="text-gray400" />
               </button>
             </div>

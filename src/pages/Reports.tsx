@@ -34,24 +34,24 @@ export function Reports() {
   ]
 
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-8">
+    <div className="w-full">
       {/* Header */}
-      <div className="bg-white pt-12 pb-3 px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-extrabold text-dark">Reports</h1>
-            <p className="text-xs text-gray500 mt-0.5">
+      <div className="bg-white pt-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-lg xs:text-xl font-extrabold text-dark">Reports</h1>
+            <p className="text-xs text-gray500 mt-0.5 truncate">
               {currentStore?.branch ? `${currentStore.name} - ${currentStore.branch}` : currentStore?.name}
             </p>
           </div>
           <StorePickerButton />
         </div>
-        <div className="mt-3">
+        <div className="mt-3 -mx-1">
           <PeriodFilterBar />
         </div>
       </div>
 
-      <div className="px-5 lg:px-8 mt-4">
+      <div className="px-4 xs:px-5 lg:px-8 mt-4">
         {isLoading ? (
           <div className="space-y-3">
             <ShimmerBox className="h-24" />
@@ -61,17 +61,17 @@ export function Reports() {
         ) : (
           <>
             {/* Summary Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2.5">
               {summaryStats.map((stat, i) => {
                 const Icon = stat.icon
                 return (
                   <StaggeredAnimation key={i} index={i}>
-                    <GlassCard className="p-4 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gray100 flex items-center justify-center">
+                    <GlassCard className="p-4 flex items-center gap-3 min-w-0">
+                      <div className="w-10 h-10 rounded-xl bg-gray100 flex items-center justify-center shrink-0">
                         <Icon size={18} className={stat.color} />
                       </div>
-                      <div>
-                        <p className="text-base font-extrabold text-dark">{stat.value}</p>
+                      <div className="min-w-0">
+                        <p className="text-base font-extrabold text-dark truncate">{stat.value}</p>
                         <p className="text-[11px] text-gray500">{stat.label}</p>
                       </div>
                     </GlassCard>
@@ -186,9 +186,9 @@ export function Reports() {
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between py-2 border-b border-gray100 last:border-0">
-      <span className="text-sm text-gray600">{label}</span>
-      <span className="text-sm font-bold text-dark">{value}</span>
+    <div className="flex items-center justify-between gap-3 py-2 border-b border-gray100 last:border-0">
+      <span className="text-sm text-gray600 shrink-0">{label}</span>
+      <span className="text-sm font-bold text-dark text-right truncate">{value}</span>
     </div>
   )
 }

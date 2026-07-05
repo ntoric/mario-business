@@ -45,13 +45,13 @@ export function Settings() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-8">
+    <div className="w-full">
       {/* Header */}
-      <div className="bg-white pt-12 pb-3 px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
-        <h1 className="text-xl font-extrabold text-dark">Settings</h1>
+      <div className="bg-white pt-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
+        <h1 className="text-lg xs:text-xl font-extrabold text-dark">Settings</h1>
       </div>
 
-      <div className="px-5 lg:px-8 mt-4 space-y-4 max-w-2xl">
+      <div className="px-4 xs:px-5 lg:px-8 mt-4 space-y-4 max-w-2xl">
         {/* Profile Card */}
         <StaggeredAnimation index={0}>
           <GlassCard className="p-5">
@@ -61,8 +61,8 @@ export function Settings() {
                   {user?.name?.charAt(0).toUpperCase() ?? 'U'}
                 </span>
               </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-extrabold text-dark">{user?.name ?? 'User'}</h2>
+              <div className="flex-1 min-w-0">
+                <h2 className="text-lg font-extrabold text-dark truncate">{user?.name ?? 'User'}</h2>
                 <p className="text-sm text-gray500">@{user?.username}</p>
                 <div className="flex items-center gap-2 mt-1.5">
                   <span className="px-2.5 py-0.5 bg-primary-extraLight rounded-lg text-[11px] font-bold text-primary capitalize">
@@ -176,7 +176,7 @@ export function Settings() {
                     placeholder="Current Password"
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
-                    className="input-field py-3 text-sm"
+                    className="input-field"
                     required
                   />
                   <input
@@ -184,7 +184,7 @@ export function Settings() {
                     placeholder="New Password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="input-field py-3 text-sm"
+                    className="input-field"
                     required
                   />
                   <input
@@ -192,7 +192,7 @@ export function Settings() {
                     placeholder="Confirm New Password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="input-field py-3 text-sm"
+                    className="input-field"
                     required
                   />
                   {newPassword !== confirmPassword && confirmPassword.length > 0 && (

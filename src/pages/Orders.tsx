@@ -68,13 +68,13 @@ export function Orders() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-8">
+    <div className="w-full">
       {/* Header */}
-      <div className="bg-white pt-12 pb-3 px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-extrabold text-dark">Orders</h1>
-            <p className="text-xs text-gray500 mt-0.5">
+      <div className="bg-white pt-header pb-3 px-4 xs:px-5 lg:px-8 sticky top-0 z-30 border-b border-gray100">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-lg xs:text-xl font-extrabold text-dark">Orders</h1>
+            <p className="text-xs text-gray500 mt-0.5 truncate">
               {currentStore?.branch ? `${currentStore.name} - ${currentStore.branch}` : currentStore?.name}
             </p>
           </div>
@@ -85,23 +85,23 @@ export function Orders() {
         <div className="relative mt-3">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray400" />
           <input
-            type="text"
+            type="search"
             placeholder="Search orders, items, tables..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="input-field pl-11 py-3 text-sm"
+            className="input-field pl-11"
           />
         </div>
 
         {/* Status Tabs */}
-        <div className="mt-3 flex gap-2 overflow-x-auto no-scrollbar">
+        <div className="mt-3 flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
           {statusTabs.map((t) => {
             const isSelected = statusFilter === t.key
             return (
               <button
                 key={t.key}
                 onClick={() => setStatusFilter(t.key)}
-                className={`px-4 py-1.5 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
+                className={`px-3.5 xs:px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all touch-target ${
                   isSelected ? 'bg-primary text-white' : 'bg-gray100 text-gray600'
                 }`}
               >
@@ -111,13 +111,13 @@ export function Orders() {
           })}
         </div>
 
-        <div className="mt-2">
+        <div className="mt-2 -mx-1">
           <PeriodFilterBar />
         </div>
       </div>
 
       {/* Orders List */}
-      <div className="px-5 lg:px-8 mt-4">
+      <div className="px-4 xs:px-5 lg:px-8 mt-4">
         {isLoading ? (
           <div className="space-y-3">
             {Array.from({ length: 5 }).map((_, i) => <ShimmerBox key={i} className="h-24" />)}
@@ -158,23 +158,23 @@ function OrderCard({
 }) {
   return (
     <GlassCard className="overflow-hidden">
-      <button onClick={onToggle} className="w-full p-4 text-left">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${getStatusColor(order.status)}`}>
+      <button onClick={onToggle} className="w-full p-4 text-left touch-target">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${getStatusColor(order.status)}`}>
               {order.orderType === 'parcel' ? <Package size={18} /> : <Utensils size={18} />}
             </div>
-            <div>
-              <p className="font-bold text-sm text-dark">
+            <div className="min-w-0">
+              <p className="font-bold text-sm text-dark truncate">
                 {order.orderType === 'parcel' ? 'Parcel' : `Table ${order.tableNumber}`}
               </p>
               <p className="text-[11px] text-gray500 mt-0.5">{formatDate(order.createdAt)}</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 ${getStatusColor(order.status)}`}>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <span className={`px-2 py-1 rounded-lg text-[10px] xs:text-[11px] font-bold flex items-center gap-1 ${getStatusColor(order.status)}`}>
               {getStatusIcon(order.status)}
-              {order.status}
+              <span className="hidden xs:inline">{order.status}</span>
             </span>
             <ChevronDown
               size={18}
@@ -182,17 +182,17 @@ function OrderCard({
             />
           </div>
         </div>
-        <div className="mt-3 flex items-center justify-between">
-          <div className="flex items-center gap-3 text-xs text-gray500">
-            <span className="flex items-center gap-1">
+        <div className="mt-3 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3 text-xs text-gray500 min-w-0">
+            <span className="flex items-center gap-1 shrink-0">
               <ShoppingBag size={13} />
               {order.items.length} items
             </span>
             {order.paymentMethod && (
-              <span className="capitalize">{order.paymentMethod}</span>
+              <span className="capitalize truncate">{order.paymentMethod}</span>
             )}
           </div>
-          <p className="text-base font-extrabold text-dark">{formatCurrency(order.totalAmount)}</p>
+          <p className="text-base font-extrabold text-dark shrink-0">{formatCurrency(order.totalAmount)}</p>
         </div>
       </button>
 
@@ -200,12 +200,12 @@ function OrderCard({
         <div className="px-4 pb-4 border-t border-gray100 pt-3">
           <div className="space-y-2">
             {order.items.map((oi, idx) => (
-              <div key={idx} className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-gray400 font-bold w-6">{oi.quantity}x</span>
-                  <span className="text-dark font-medium">{oi.item.name}</span>
+              <div key={idx} className="flex items-center justify-between gap-2 text-sm">
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  <span className="text-gray400 font-bold w-6 shrink-0">{oi.quantity}x</span>
+                  <span className="text-dark font-medium truncate">{oi.item.name}</span>
                 </div>
-                <span className="text-gray600 font-semibold">
+                <span className="text-gray600 font-semibold shrink-0">
                   {formatCurrency((oi.unitPrice ?? oi.item.price) * oi.quantity)}
                 </span>
               </div>
