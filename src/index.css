@@ -9,20 +9,15 @@
 
   html {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-background text-dark antialiased;
-    overscroll-behavior: none;
-    overflow-x: hidden;
     min-height: 100dvh;
     min-height: -webkit-fill-available;
-  }
-
-  #root {
-    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Hide scrollbar for horizontal scroll areas */
@@ -111,7 +106,7 @@
   }
 
   .page-shell {
-    @apply min-h-screen-dvh bg-background overflow-x-hidden;
+    @apply min-h-screen-dvh bg-background w-full max-w-[100vw];
   }
 
   .page-bottom-nav {
