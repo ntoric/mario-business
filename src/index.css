@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-dark antialiased;
+    overscroll-behavior: none;
+  }
+
+  /* Hide scrollbar for horizontal scroll areas */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-[0_2px_16px_rgba(30,20,56,0.05)] p-5;
+  }
+
+  .card-shadow {
+    box-shadow: 0 2px 16px rgba(30, 20, 56, 0.05);
+  }
+
+  .elevated-shadow {
+    box-shadow: 0 4px 24px rgba(30, 20, 56, 0.08);
+  }
+
+  .soft-shadow {
+    box-shadow: 0 8px 20px rgba(123, 110, 246, 0.08);
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #7B6EF6, #9D8FFF);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(135deg, #1E1438, #2D1B5E);
+  }
+
+  .gradient-success {
+    background: linear-gradient(135deg, #00B894, #55EFC4);
+  }
+
+  .gradient-danger {
+    background: linear-gradient(135deg, #E84393, #FAB1C7);
+  }
+
+  .gradient-warning {
+    background: linear-gradient(135deg, #E17055, #FDCB6E);
+  }
+
+  .gradient-info {
+    background: linear-gradient(135deg, #0984E3, #74B9FF);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, #00CEC9, #55EFC4);
+  }
+
+  .shimmer-box {
+    background: linear-gradient(90deg, #E8EAF6 25%, #F1F3FE 50%, #E8EAF6 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  .input-field {
+    @apply w-full bg-gray100 rounded-xl px-4 py-4 text-sm text-dark placeholder-gray400 outline-none transition-all border-2 border-transparent focus:border-primary;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white font-bold rounded-2xl py-4 px-7 transition-all active:scale-95 disabled:opacity-60;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary font-bold rounded-2xl py-4 px-7 transition-all active:scale-95;
+  }
+
+  .section-title {
+    @apply text-xs font-bold text-gray500 tracking-widest uppercase;
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
